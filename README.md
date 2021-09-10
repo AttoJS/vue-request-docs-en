@@ -38,6 +38,12 @@
   </a>
 </div>
 
+## 为什么选择 VueRequest
+
+在以往的业务项目中，常常被 loading 状态的管理、请求的节流防抖、接口数据的缓存、分页等这些重复的实现所困惑。每当开启一个新项目时，我们都得手动去处理以上这些问题，这将是一个重复性的工作，而且还得确保团队的一致。
+
+VueRequest 旨在为开发者提供便捷、快速的方式来管理接口的状态。在业务开发中省去上述的那些“脏活累活”，只需要简单的配置即可使用，专注于业务核心的开发。
+
 ## 特性
 
 - 🚀 &nbsp;所有数据都具有响应式
@@ -48,15 +54,14 @@
 - 🎯 &nbsp;聚焦页面时自动重新请求
 - ⚙️ &nbsp;强大的分页扩展以及加载更多扩展
 - 📠 &nbsp;完全使用 Typescript 编写，具有强大的类型提示
+- ⚡️ &nbsp;兼容 Vite
 - 🍃 &nbsp;轻量化
 - 📦 &nbsp;开箱即用
-- 📜 &nbsp;有趣的可交互文档
 
 ## 文档
 
 - [English](https://www.attojs.org/)
-- [中文](https://cn.attojs.org/)
-- [国内镜像](https://www.attojs.com/)
+- [中文文档](https://www.attojs.com/)
 
 ## 安装
 
@@ -126,20 +131,19 @@ const { data, error, run } = useRequest(getUserInfo, {
 });
 ```
 
-![vue-request](https://gitee.com/john60676/Image/raw/master/vue-request/1.gif)
+![vue-request](https://z3.ax1x.com/2021/09/10/hXAs8s.gif)
 
 ### 2.轮询数据
 
-有些时候，你要确保多个浏览器窗口之间数据的一致性；又或者是当用户电脑在休眠状态重新激活后，页面的数据需要同步到最新状态时。`refreshOnWindowFocus` 可能会为你节省很多逻辑代码。[点击这里直达文档](https://www.attojs.com/guide/documentation/refreshOnWindowFocus.html)
+有些时候，你要确保多个设备间数据的同步更新。这时候可以用我们提供的 `pollingInterval` 来定期重新请求接口，这样就可以保证多设备间的数据一致性。当用户进行修改数据时，两个窗口将会实时同步更新。[点击这里直达文档](https://www.attojs.com/guide/documentation/polling.htm)
 
 ```ts
 const { data, error, run } = useRequest(getUserInfo, {
-  refreshOnWindowFocus: true,
-  refocusTimespan: 1000, // 请求间隔时间
+  pollingInterval: 1000, // 请求间隔时间
 });
 ```
 
-![vue-request2](https://gitee.com/john60676/Image/raw/master/vue-request/3.gif)
+![vue-request](https://z3.ax1x.com/2021/09/10/hXAy2n.gif)
 
 ## TODO 列表
 
